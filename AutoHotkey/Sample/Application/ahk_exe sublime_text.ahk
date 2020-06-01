@@ -11,11 +11,11 @@ XButton1::
 	KeyWait, XButton1
 Return
 ; =========================================================================================== [HOTKEY] [BUILD]
-~MButton::
-	If IsMouseOver_("ahk_exe sublime_text.exe")
-		SendInput, ^b
-	KeyWait, MButton
-Return
+; ~MButton::
+; 	If IsMouseOver_("ahk_exe sublime_text.exe")
+; 		SendInput, ^b
+; 	KeyWait, MButton
+; Return
 ; =========================================================================================== [HOTKEY]
 F2:: ; REPLACE
 	If IsMouseOver_("ahk_exe sublime_text.exe")

@@ -12,9 +12,12 @@
 SplitPath, file_mspaint, 		@mspaint_ext
 ; SplitPath, file_notepad, 		@notepad_ext
 ; =========================================================================================== [VARIABLES]
+#Include %A_ScriptDir%\\Script\Variables.ahk
+; =========================================================================================== [VARIABLES]
 COUNT = 0;
 Return
 ; =========================================================================================== [OPTIONS] [RETURN]
+
 
 ; =========================================================================================== [LABEL]
 run_mspaint:
@@ -138,9 +141,66 @@ Return
 ; =========================================================================================== [HOTKEY] [RUN CCLEANER APPLICATION IN BACKGROUND]
 ~Escape::
 ; IfWinActive, ahk_class Progman
-if IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
 	Gosub, run_background_ccleaner
 Return
+; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
+~Alt & XButton2::
+Goto, TaskViewLeft
+KeyWait, XButton2
+Return
+~WheelUp::
+if IsMouseOver_("ahk_class DV2ControlHost") Or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+Goto, TaskViewLeft
+Return
+; LABEL
+TaskViewLeft:
+SendInput, ^#{Left}
+Return
+; =========================================================================================== [HOTKEY] [TASK VIEW BACKWARD]
+~Alt & XButton1::
+Goto, TaskViewRight
+KeyWait, XButton1
+Return
+~WheelDown::
+if IsMouseOver_("ahk_class DV2ControlHost") Or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+Goto, TaskViewRight
+Return
+; LABEL
+TaskViewRight:
+SendInput, ^#{Right}
+Return
+; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
+~LButton & `::
+; ~LControl & MButton::
+	WinSet, AlwaysOnTop, , A
+	Sleep, 200
+Return
+; =========================================================================================== [HOTKEY] [DELETE PROCESS UNDER MOUSE CURSOR]
+; ~MButton & Delete::
+; Gosub, processclose_mousecursor
+; KeyWait, Delete
+; Return
+; LABEL
+; processclose_mousecursor:
+; getval_W_ID_MC := GetWindowID_MC()
+; If (getval_W_ID_MC != "") {
+; 	wintitle_W_ID := " ahk_id " . getval_W_ID_MC
+
+; 	wgetProcessName		:= GetWinGetCmd_(WinGet_ProcessName , wintitle_W_ID)
+; 	wgetPID				:= GetWinGetCmd_(WinGet_PID , wintitle_W_ID)
+; 	wgetID				:= GetWinGetCmd_(WinGet_ID , wintitle_W_ID)
+;  	getval_WinTitle 	:= GetWindowTitle_IDorIDLast(wgetID)
+
+; 	If not (IsProcessNameFound_List(wgetProcessName)) {
+; 	; Delete process if it's not found in the exception list
+; 		If (wgetProcessName != "") {
+; 			ProcessClose_PN(wgetProcessName)	; Close all process with = to PN
+; 		}
+; 	; Else don't delete the process
+; 	}
+; }
+; Return
 ; =========================================================================================== [HOTKEY] [PAUSE/RESUME]
 ; F12::
 ; Pause

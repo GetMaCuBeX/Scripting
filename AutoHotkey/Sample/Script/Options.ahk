@@ -2,7 +2,7 @@
 								; [#] Directives
 #KeyHistory, 0              	; Disable key history.
 #MaxThreadsPerHotkey, 1     	; No re-entrant hotkey handling.
-;  #NoTrayIcon
+; #NoTrayIcon
 Menu, Tray, Icon, main.cpl, 4
 #NoEnv                       	; Recommended for performance and compatibility with future AutoHotkey releases.
 #Persistent                  	; Prevent the script from exiting automatically.

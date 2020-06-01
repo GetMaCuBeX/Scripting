@@ -14,6 +14,6 @@ MButton::
 	KeyWait, MButton
 Return
 ; =========================================================================================== [HOTKEY]
-~`::
-	SendInput, ^!+F
-Return
+; ~`::
+; 	SendInput, ^!+F
+; Return

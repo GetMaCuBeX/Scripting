@@ -85,7 +85,8 @@ ProcessClose_PN(PN){
 			If ErrorLevel { 		; PN is [Closed].
 			   	Continue
 			} Else { 				; PN was Failed to [Closed].
-				Continue
+				; Continue
+				Break
 			}
 		} Else {					; PN is ! [Present].
 			Break
@@ -107,7 +108,8 @@ Process, Exist, %PID%
 IsProcessNameFound_List(PN){
 	Switch PN
 	{
-		Case "explorer.exe", "sublime_text.exe", "Code.exe":
+		; Case "explorer.exe", "sublime_text.exe", "Code.exe":
+		Case "explorer.exe":
 			Return True
 		Default:
 		    Return False

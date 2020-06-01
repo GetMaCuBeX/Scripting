@@ -124,11 +124,13 @@ If (getval_W_ID_MC != "") {
 
 
 	If not (IsProcessNameFound_List(wgetProcessName)) {
+	; Delete process if it's not found in the exception list
 		If (wgetProcessName != "") {
 			If GetKeyState("Shift")
 				ProcessClose_PN(wgetProcessName)	; Close all process with = to PN
 			ProcessClose_PID(wgetPID)				; Close only process with = to PID
 		}
+	; Else don't delete the process
 	}
 }
 Return
