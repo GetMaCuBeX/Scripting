@@ -12,20 +12,11 @@ Return
 ; =========================================================================================== [OPTIONS] [RETURN]
 
 
-; ~WheelUp::
-; if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-; MsgBox, Up
-; ; else if IsMouseOver_("ahk_class DV2ControlHost")
-; ; Goto, TaskViewLeft
-; Return
 
 
-; ~WheelDown::
-; if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-; MsgBox, Down
-; ; else if IsMouseOver_("ahk_class DV2ControlHost")
-; ; Goto, TaskViewLeft
-; Return
+; ~^WheelDown::return
+; ~^WheelUp::return
+; #MaxHotkeysPerInterval 1000
 
 ; :*:11::
 ; FormatTime, OutputVar, , h:mm:ss tt

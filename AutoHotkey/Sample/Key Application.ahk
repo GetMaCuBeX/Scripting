@@ -145,15 +145,11 @@ Return
 if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
 	Gosub, run_background_ccleaner
 Return
+; =========================================================================================== [HOTKEY] [SWITCHING TASK VIEW] [RELATED HOTKEY AT THE BOTTOM]
 ; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
 ~Alt & XButton2::
-Goto, TaskViewLeft
-KeyWait, XButton2
-Return
-~WheelUp::
-; if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
 	Goto, TaskViewLeft
+KeyWait, XButton2
 Return
 ; LABEL <<------------------------<<<<
 TaskViewLeft:
@@ -161,13 +157,8 @@ SendInput, #^{Left}
 Return
 ; =========================================================================================== [HOTKEY] [TASK VIEW BACKWARD]
 ~Alt & XButton1::
-Goto, TaskViewRight
-KeyWait, XButton1
-Return
-~WheelDown::
-; if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
 	Goto, TaskViewRight
+KeyWait, XButton1
 Return
 ; LABEL <<------------------------<<<<
 TaskViewRight:
@@ -221,3 +212,22 @@ Return
 ; Return
 ; =========================================================================================== [HOTKEY] [EXIT APP]
 #Include %A_ScriptDir%\\Script\ExitApp.ahk
+
+; =========================================================================================== [HOTKEY] [SWITCHING TASK VIEW]
+; IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
+#If IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
+; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
+WheelUp::
+	Goto, TaskViewLeft
+Return
+WheelDown::
+	Goto, TaskViewRight
+Return
+; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
+
+
+
+
+
+
+
