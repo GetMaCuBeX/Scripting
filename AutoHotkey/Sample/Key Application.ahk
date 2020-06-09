@@ -15,6 +15,7 @@ SplitPath, file_mspaint, 		@mspaint_ext
 #Include %A_ScriptDir%\\Script\Variables.ahk
 ; =========================================================================================== [VARIABLES]
 COUNT = 0;
+TASK_SWITCH = 0;
 Return
 ; =========================================================================================== [OPTIONS] [RETURN]
 
@@ -100,16 +101,16 @@ Return
 ~LWin & End::
 SendInput, {Browser_Stop}
 Return
-~LWin & Right::
+~LWin & Numpad6::
 SendInput, {Media_Next}
 Return
-~LWin & Left::
+~LWin & Numpad3::
 SendInput, {Media_Prev}
 Return
-~LWin & Up::
+~LWin & Numpad8::
 SendInput, {Media_Play_Pause}
 Return
-~LWin & Down::
+~LWin & Numpad2::
 SendInput, {Media_Stop}
 Return
 ; =========================================================================================== [HOTKEY] [HIDE TRAY NOTIFICATION ICONS]
@@ -150,12 +151,13 @@ Goto, TaskViewLeft
 KeyWait, XButton2
 Return
 ~WheelUp::
-if IsMouseOver_("ahk_class DV2ControlHost") Or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-Goto, TaskViewLeft
+; if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+	Goto, TaskViewLeft
 Return
-; LABEL
+; LABEL <<------------------------<<<<
 TaskViewLeft:
-SendInput, ^#{Left}
+SendInput, #^{Left}
 Return
 ; =========================================================================================== [HOTKEY] [TASK VIEW BACKWARD]
 ~Alt & XButton1::
@@ -163,12 +165,13 @@ Goto, TaskViewRight
 KeyWait, XButton1
 Return
 ~WheelDown::
-if IsMouseOver_("ahk_class DV2ControlHost") Or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
-Goto, TaskViewRight
+; if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+if IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+	Goto, TaskViewRight
 Return
-; LABEL
+; LABEL <<------------------------<<<<
 TaskViewRight:
-SendInput, ^#{Right}
+SendInput, #^{Right}
 Return
 ; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
 ~LButton & `::
@@ -176,6 +179,13 @@ Return
 	WinSet, AlwaysOnTop, , A
 	Sleep, 200
 Return
+; =========================================================================================== [HOTKEY] [POWERTOYS] [FANCY ZONES]
+~LButton & RButton::
+SendInput, {LShift Down}
+KeyWait, LButton
+SendInput, {LShift Up}
+Return
+; #MaxThreadsPerHotkey 2
 ; =========================================================================================== [HOTKEY] [DELETE PROCESS UNDER MOUSE CURSOR]
 ; ~MButton & Delete::
 ; Gosub, processclose_mousecursor

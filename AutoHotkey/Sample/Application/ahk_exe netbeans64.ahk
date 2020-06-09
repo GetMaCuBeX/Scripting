@@ -93,6 +93,11 @@ AppsKey::
 	function_netbeans_code_show_hints()
 	KeyWait, AppsKey
 Return
+; =========================================================================================== [HOTKEY] [RUN FILE]
+~LButton & r::
+SendInput, +{F6}
+KeyWait, r
+Return
 ; =========================================================================================== [FUNCTION]
 function_netbeans_code_Format() {
 	SendInput, +!{f}

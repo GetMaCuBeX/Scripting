@@ -12,6 +12,20 @@ Return
 ; =========================================================================================== [OPTIONS] [RETURN]
 
 
+; ~WheelUp::
+; if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+; MsgBox, Up
+; ; else if IsMouseOver_("ahk_class DV2ControlHost")
+; ; Goto, TaskViewLeft
+; Return
+
+
+; ~WheelDown::
+; if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+; MsgBox, Down
+; ; else if IsMouseOver_("ahk_class DV2ControlHost")
+; ; Goto, TaskViewLeft
+; Return
 
 ; :*:11::
 ; FormatTime, OutputVar, , h:mm:ss tt
@@ -40,7 +54,48 @@ Return
 ; #y::MsgBox, And this one too.
 ; #MaxThreadsBuffer off
 ; #z::MsgBox, But not this one.
-; ===========================================================================================
+; =========================================================================================== [HOTKEY] [RUN FILE] [NETBEANS PROJECT]
+; ~LButton & r::
+; SendInput, +{F6}
+; KeyWait, r
+; Return
+; =========================================================================================== [HOTKEY] [POWERTOYS] [SNAPPING]
+; ~LButton & RButton::
+; SendInput, {LShift Down}
+; KeyWait, LButton
+; SendInput, {LShift Up}
+; Return
+; =========================================================================================== [HOTKEY] [TASK VIEW] [MOVE ACTIVE WINDOW]
+~Alt & WheelUp::
+  WinGetTitle, Title, A
+  WinSet, ExStyle, ^0x80, %Title%
+  SendInput, ^#{Left}
+  ; KeyWait, WheelUp
+  WinSet, ExStyle, ^0x80, %Title%
+  WinActivate, %Title%
+Return
+
+~Alt & WheelDown::
+  WinGetTitle, Title, A
+  WinSet, ExStyle, ^0x80, %Title%
+  SendInput, ^#{Right}
+  ; KeyWait, WheelDown
+  WinSet, ExStyle, ^0x80, %Title%
+  WinActivate, %Title%
+Return
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
+; =========================================================================================== [HOTKEY] []
 ; ===========================================================================================
 
 
