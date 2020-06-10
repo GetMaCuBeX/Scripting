@@ -57,20 +57,20 @@ Return
 ; SendInput, {LShift Up}
 ; Return
 ; =========================================================================================== [HOTKEY] [TASK VIEW] [MOVE ACTIVE WINDOW]
-~Alt & WheelUp::
+~LButton & PgUp::
   WinGetTitle, Title, A
   WinSet, ExStyle, ^0x80, %Title%
-  SendInput, ^#{Left}
-  ; KeyWait, WheelUp
+  SendInput, #^{Left}
+  ; KeyWait, XButton2
   WinSet, ExStyle, ^0x80, %Title%
   WinActivate, %Title%
 Return
 
-~Alt & WheelDown::
+~LButton & PgDn::
   WinGetTitle, Title, A
   WinSet, ExStyle, ^0x80, %Title%
-  SendInput, ^#{Right}
-  ; KeyWait, WheelDown
+  SendInput, #^{Right}
+  ; KeyWait, XButton1
   WinSet, ExStyle, ^0x80, %Title%
   WinActivate, %Title%
 Return

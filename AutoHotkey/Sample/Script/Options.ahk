@@ -2,8 +2,8 @@
 								; [#] Directives
 #KeyHistory, 0              	; Disable key history.
 #MaxThreadsPerHotkey, 1     	; No re-entrant hotkey handling.
-; #NoTrayIcon
-Menu, Tray, Icon, main.cpl, 4
+#NoTrayIcon
+; Menu, Tray, Icon, main.cpl, 4
 #NoEnv                       	; Recommended for performance and compatibility with future AutoHotkey releases.
 #Persistent                  	; Prevent the script from exiting automatically.
 #SingleInstance force        	; Skips the dialog box and replaces the old instance automatically, which is similar in effect to the Reload command.
@@ -32,3 +32,4 @@ SetMouseDelay -1
 ; SetWinDelay 0
 SetWinDelay, -1              	; Remove short delay done automatically after every windowing command except IfWinActive and IfWinExist.
 SetWorkingDir %A_ScriptDir%  	; Ensures a consistent starting directory.
+

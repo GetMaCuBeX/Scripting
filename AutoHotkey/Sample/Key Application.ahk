@@ -1,22 +1,21 @@
 ; =========================================================================================== [OPTIONS]
-#Include %A_ScriptDir%\\Script\Options.ahk
+; #Include %A_ScriptDir%\\Script\Options.ahk
 ; =========================================================================================== [FUNCTION] [TOOLTIP]
-#Include %A_ScriptDir%\\Script\ToolTip.ahk
+; #Include %A_ScriptDir%\\Script\ToolTip.ahk
 ; @ToolTipTimeOut_Specify_Global = -5000  ; Re-Assign value for Specified TimeOut
 ; @ToolTipTimeOut_Default_Global = -2000  ; Re-Assign value for Default TimeOut
 ; =========================================================================================== [FUNCTIONS]
-#Include %A_ScriptDir%\\Script\Functions.ahk
+; #Include %A_ScriptDir%\\Script\Functions.ahk
 ; =========================================================================================== [FILES]
-#Include %A_ScriptDir%\\Script\Files.ahk
+; #Include %A_ScriptDir%\\Script\Files.ahk
 ; SplitPath, file_ccleaner64, 	@ccleaner64_ext
-SplitPath, file_mspaint, 		@mspaint_ext
+; SplitPath, file_mspaint, 		@mspaint_ext
 ; SplitPath, file_notepad, 		@notepad_ext
 ; =========================================================================================== [VARIABLES]
-#Include %A_ScriptDir%\\Script\Variables.ahk
+; #Include %A_ScriptDir%\\Script\Variables.ahk
 ; =========================================================================================== [VARIABLES]
-COUNT = 0;
-TASK_SWITCH = 0;
-Return
+; COUNT = 0;
+; Return
 ; =========================================================================================== [OPTIONS] [RETURN]
 
 
@@ -63,28 +62,28 @@ Sleep, 1000
 Gosub, run_explorer
 Return
 ; =========================================================================================== [LABEL]
-printscreen_automatic:
-Send, !{PrintScreen} 	; Alt + PrintScreen [Focus Window]
-IfWinExist, Untitled - Paint
-	WinActivate
-Else
-	Gosub, run_mspaint
-SendInput, ^v 	;PASTE
-Sleep, 50
-SendInput, ^s 	;SAVE
-WinWait, Save As
-COUNT +=1
-SendInput, %COUNT%
-Sleep, 5
-WinActivate, Save As
-SendInput, {Enter}
+; printscreen_automatic:
+; Send, !{PrintScreen} 	; Alt + PrintScreen [Focus Window]
+; IfWinExist, Untitled - Paint
+; 	WinActivate
+; Else
+; Gosub, run_mspaint
+; SendInput, ^v 	;PASTE
+; Sleep, 50
+; SendInput, ^s 	;SAVE
+; WinWait, Save As
+; COUNT +=1
+; SendInput, %COUNT%
+; Sleep, 5
+; WinActivate, Save As
+; SendInput, {Enter}
 ; WinWait, %COUNT% - Paint
 ; Sleep, 5
 ; CLOSE PAINT APP
 ; Process, Exist, %@mspaint_ext%
 ; If ErrorLevel 				; Process is [Present].
 ; 	Process, Close, %@mspaint_ext%
-Return
+; Return
 ; =========================================================================================== [HOTKEY] [MULTIMEDIA CONTROLS]
 ~LWin & WheelUp::
 SendInput, {Volume_Up}
@@ -211,18 +210,18 @@ Return
 ; ExitApp
 ; Return
 ; =========================================================================================== [HOTKEY] [EXIT APP]
-#Include %A_ScriptDir%\\Script\ExitApp.ahk
+; #Include %A_ScriptDir%\\Script\ExitApp.ahk
 
 ; =========================================================================================== [HOTKEY] [SWITCHING TASK VIEW]
 ; IsMouseOver_("ahk_class DV2ControlHost") or IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
-#If IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
-; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
-WheelUp::
-	Goto, TaskViewLeft
-Return
-WheelDown::
-	Goto, TaskViewRight
-Return
+; #If IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
+; ; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
+; WheelUp::
+; 	Goto, TaskViewLeft
+; Return
+; WheelDown::
+; 	Goto, TaskViewRight
+; Return
 ; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
 
 

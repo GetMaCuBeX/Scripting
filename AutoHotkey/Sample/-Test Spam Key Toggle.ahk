@@ -18,7 +18,7 @@ Return
 #MaxThreadsPerHotkey 2
 ~RControl::
     Toggle := !Toggle
-     While Toggle{
+    While Toggle{
         SendInput, w
         Sleep, 500
     }
