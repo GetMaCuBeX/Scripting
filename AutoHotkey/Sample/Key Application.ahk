@@ -35,15 +35,15 @@ If (FileExist(file_ccleaner64))
 Return
 ; =========================================================================================== [LABEL]
 run_explorer:
-Run, %A_WinDir%\explorer.exe
+	Run, %A_WinDir%\explorer.exe
 Return
 ; =========================================================================================== [LABEL]
 hide_tray_notification_icons:
-RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Policies\Explorer, NoTrayItemsDisplay, 1
+	RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Policies\Explorer, NoTrayItemsDisplay, 1
 Return
 ; =========================================================================================== [LABEL]
 show_tray_notificaiton_icons:
-RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Policies\Explorer, NoTrayItemsDisplay, 0
+	RegWrite, REG_DWORD, HKEY_CURRENT_USER, Software\Microsoft\Windows\CurrentVersion\Policies\Explorer, NoTrayItemsDisplay, 0
 Return
 ; =========================================================================================== [LABEL]
 toggle_view_desktop_icons:
@@ -56,10 +56,10 @@ Else
 Return
 ; =========================================================================================== [LABEL]
 restart_windows_explorer:
-Run, taskkill /f /im explorer.exe
-WinWaitClose, ahk_exe explorer.exe
-Sleep, 1000
-Gosub, run_explorer
+	Run, taskkill /f /im explorer.exe
+	WinWaitClose, ahk_exe explorer.exe
+	Sleep, 1000
+	Gosub, run_explorer
 Return
 ; =========================================================================================== [LABEL]
 ; printscreen_automatic:
@@ -86,43 +86,43 @@ Return
 ; Return
 ; =========================================================================================== [HOTKEY] [MULTIMEDIA CONTROLS]
 ~LWin & WheelUp::
-SendInput, {Volume_Up}
+	SendInput, {Volume_Up}
 Return
 ~LWin & WheelDown::
-SendInput, {Volume_Down}
+	SendInput, {Volume_Down}
 Return
 ~LWin & MButton::
-SendInput, {Volume_Mute}
+	SendInput, {Volume_Mute}
 Return
 ~LWin & Home::
-SendInput, {Browser_Home}
+	SendInput, {Browser_Home}
 Return
 ~LWin & End::
-SendInput, {Browser_Stop}
+	SendInput, {Browser_Stop}
 Return
 ~LWin & Numpad6::
-SendInput, {Media_Next}
+	SendInput, {Media_Next}
 Return
 ~LWin & Numpad3::
-SendInput, {Media_Prev}
+	SendInput, {Media_Prev}
 Return
 ~LWin & Numpad8::
-SendInput, {Media_Play_Pause}
+	SendInput, {Media_Play_Pause}
 Return
 ~LWin & Numpad2::
-SendInput, {Media_Stop}
+	SendInput, {Media_Stop}
 Return
 ; =========================================================================================== [HOTKEY] [HIDE TRAY NOTIFICATION ICONS]
 ~AppsKey & NumpadDot::
 ~AppsKey & NumpadDel::
-Gosub, hide_tray_notification_icons
-Gosub, restart_windows_explorer
+	Gosub, hide_tray_notification_icons
+	Gosub, restart_windows_explorer
 Return
 ; =========================================================================================== [HOTKEY] [SHOW TRAY NOTIFICATION ICONS]
 ~AppsKey & Numpad0::
 ~AppsKey & NumpadIns::
-Gosub, show_tray_notificaiton_icons
-Gosub, restart_windows_explorer
+	Gosub, show_tray_notificaiton_icons
+	Gosub, restart_windows_explorer
 Return
 ; =========================================================================================== [HOTKEYS] [HIDE/SHOW DESKTOP ICONS]
 ~MButton::
@@ -131,37 +131,39 @@ if IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") 
 Return
 ; =========================================================================================== [HOTKEY] [RESTART WINDOWS EXPLORER]
 ^F5::
-KeyWait, F5
-Gosub, restart_windows_explorer
+	KeyWait, F5
+	Gosub, restart_windows_explorer
 Return
 ; =========================================================================================== [HOTKEY] [PRINTSCREEN ACTIVE WINDOW]
 ; LWin & PrintScreen::
-; Gosub, printscreen_automatic
+	; Gosub, printscreen_automatic
 ; Return
 ; =========================================================================================== [HOTKEY] [RUN CCLEANER APPLICATION IN BACKGROUND]
 ~Escape::
 ; IfWinActive, ahk_class Progman
-if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button")
+if IsMouseOver_("ahk_class WorkerW") Or IsMouseOver_("ahk_class Progman") Or IsMouseOver_("ahk_class Shell_TrayWnd") Or IsMouseOver_("ahk_class Button"){
 	Gosub, run_background_ccleaner
+	; clipboard = ; CLEAR CLIPBOARD
+}
 Return
 ; =========================================================================================== [HOTKEY] [SWITCHING TASK VIEW] [RELATED HOTKEY AT THE BOTTOM]
 ; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
 ~Alt & XButton2::
-	Goto, TaskViewLeft
-KeyWait, XButton2
+	Gosub, TaskViewLeft
+	KeyWait, XButton2
 Return
 ; LABEL <<------------------------<<<<
 TaskViewLeft:
-SendInput, #^{Left}
+	SendInput, #^{Left}
 Return
 ; =========================================================================================== [HOTKEY] [TASK VIEW BACKWARD]
 ~Alt & XButton1::
-	Goto, TaskViewRight
-KeyWait, XButton1
+	Gosub, TaskViewRight
+	KeyWait, XButton1
 Return
 ; LABEL <<------------------------<<<<
 TaskViewRight:
-SendInput, #^{Right}
+	SendInput, #^{Right}
 Return
 ; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
 ~LButton & `::
@@ -171,15 +173,15 @@ Return
 Return
 ; =========================================================================================== [HOTKEY] [POWERTOYS] [FANCY ZONES]
 ~LButton & RButton::
-SendInput, {LShift Down}
-KeyWait, LButton
-SendInput, {LShift Up}
+	SendInput, {LShift Down}
+	KeyWait, LButton
+	SendInput, {LShift Up}
 Return
 ; #MaxThreadsPerHotkey 2
 ; =========================================================================================== [HOTKEY] [DELETE PROCESS UNDER MOUSE CURSOR]
 ; ~MButton & Delete::
-; Gosub, processclose_mousecursor
-; KeyWait, Delete
+; 	Gosub, processclose_mousecursor
+; 	KeyWait, Delete
 ; Return
 ; LABEL
 ; processclose_mousecursor:
@@ -203,11 +205,11 @@ Return
 ; Return
 ; =========================================================================================== [HOTKEY] [PAUSE/RESUME]
 ; F12::
-; Pause
+	; Pause
 ; Return
 ; =========================================================================================== [HOTKEY] [EXIT SCRIPT]
 ; F8::
-; ExitApp
+	; ExitApp
 ; Return
 ; =========================================================================================== [HOTKEY] [EXIT APP]
 ; #Include %A_ScriptDir%\\Script\ExitApp.ahk
@@ -217,10 +219,10 @@ Return
 ; #If IsMouseOver_("ahk_class WorkerW") or IsMouseOver_("ahk_class Progman") or IsMouseOver_("ahk_class Shell_TrayWnd") or IsMouseOver_("ahk_class Button")
 ; ; =========================================================================================== [HOTKEY] [TASK VIEW FORWARD]
 ; WheelUp::
-; 	Goto, TaskViewLeft
+; 	Gosub, TaskViewLeft
 ; Return
 ; WheelDown::
-; 	Goto, TaskViewRight
+; 	Gosub, TaskViewRight
 ; Return
 ; =========================================================================================== [HOTKEY] [SET CURRENT WINDOW ALWAYS ON TOP] [TOGGLE]
 
