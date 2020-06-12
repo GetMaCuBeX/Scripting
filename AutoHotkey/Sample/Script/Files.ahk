@@ -13,9 +13,6 @@ SplitPath, file_notepad, 		@notepad_ext
 file_notepad_WT     := "Untitled - Notepad"
 
 
-
-
-
 ; SplitPath, A_ScriptFullPath, @name_ext, @dir, @ext, @name_no_ext, @drive
 
 /*

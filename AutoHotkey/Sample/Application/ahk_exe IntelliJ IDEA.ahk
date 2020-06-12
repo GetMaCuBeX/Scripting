@@ -1,16 +1,16 @@
-﻿; =========================================================================================== [HOTKEY] [LINE COMMENT]
+﻿; ☞----------------------☜ [HOTKEY] [LINE COMMENT]
 XButton2::
 	If IsMouseOver_("ahk_exe idea64.exe")
 	    SendInput, ^/
 	KeyWait, XButton2
 Return
-; =========================================================================================== [HOTKEY] [BLOCK COMMENT]
+; ☞----------------------☜ [HOTKEY] [BLOCK COMMENT]
 ~LControl & XButton2::
 	If IsMouseOver_("ahk_exe idea64.exe")
 	    SendInput, ^+/
 	KeyWait, XButton2
 Return
-; =========================================================================================== [HOTKEY] [REFORMAT CODE + SAVE]
+; ☞----------------------☜ [HOTKEY] [REFORMAT CODE + SAVE]
 XButton1::
 	If IsMouseOver_("ahk_exe idea64.exe") {
         SendInput, ^!{l} ; REFORMAT THE CODE
@@ -18,19 +18,19 @@ XButton1::
     }
 	KeyWait, XButton1
 Return
-; =========================================================================================== [HOTKEY]
+; ☞----------------------☜ [HOTKEY]
 ~LShift & XButton2::
 	If IsMouseOver_("ahk_exe idea64.exe")
 	    SendInput, +{Home}
 	KeyWait, XButton2
 Return
-; =========================================================================================== [HOTKEY]
+; ☞----------------------☜ [HOTKEY]
 ~LShift & XButton1::
 	If IsMouseOver_("ahk_exe idea64.exe")
 	    SendInput, +{End}
 	KeyWait, XButton1
 Return
-; =========================================================================================== [HOTKEY] [ALT + ENTER]
+; ☞----------------------☜ [HOTKEY] [ALT + ENTER]
 ~LAlt & LButton::
 	If IsMouseOver_("ahk_exe idea64.exe") {
         SendInput, {LButton}
@@ -38,14 +38,14 @@ Return
     }
 	KeyWait, LButton
 Return
-; =========================================================================================== [HOTKEY] [REFACTOR RENAME]
+; ☞----------------------☜ [HOTKEY] [REFACTOR RENAME]
 F2::
 	If IsMouseOver_("ahk_exe idea64.exe") {
         SendInput, +{F6}
     }
 	KeyWait, F2
 Return
-; =========================================================================================== [HOTSTRING] [SOP]
+; ☞----------------------☜ [HOTSTRING] [SOP]
 :C*:SOP:: 	; Typed in all-caps.
 :C*:Sop:: 	; Typed with only the first letter upper-case.
 ; : :sop:: 	; Typed in any other combination.
@@ -54,7 +54,7 @@ Return
 	Sleep, 50
 	SendInput, {LEFT 2}
 Return
-; =========================================================================================== [HOTSTRING] [SEP]
+; ☞----------------------☜ [HOTSTRING] [SEP]
 :C*:SEP:: 	; Typed in all-caps.
 :C*:Sep:: 	; Typed with only the first letter upper-case.
 ; : :sep:: 	; Typed in any other combination.
@@ -63,7 +63,7 @@ Return
 	Sleep, 50
 	SendInput, {LEFT 2}
 Return
-; =========================================================================================== [HOTSTRING] [TRY CATCH]
+; ☞----------------------☜ [HOTSTRING] [TRY CATCH]
 :C*:TRY:: 	; Typed in all-caps.
 :C*:Try:: 	; Typed with only the first letter upper-case.
 ; : :sep:: 	; Typed in any other combination.

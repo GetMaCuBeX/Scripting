@@ -1,4 +1,4 @@
-; =========================================================================================== [VARIABLES]
+; ☞----------------------☜ [VARIABLES]
 ; (-) Makes this timer run only once.
 ; (+ Value) The Timer repeat automatically every specified time.
 Global @ToolTipTimeOut_Specify_Global = -5000
@@ -7,8 +7,8 @@ Global @ToolTipTimeOut_Default_Global = -2500
 @FontFamity := "Default"
 ; @FontFamity := "Lato"
 ; @FontFamity := "Microsoft Sans Serif"
-ToolTipFont(@FontSize, @FontFamity) ;-------------------------------------------------------- [CALL] [FUNCTION]
-; =========================================================================================== [FONT]
+ToolTipFont(@FontSize, @FontFamity) ; (☞ﾟヮﾟ)☞----------------------------------------------- [CALL] [FUNCTION]
+; ☞----------------------☜ [FONT]
 ToolTipFont(Options := "", Name := "", hwnd := "") {
     static hfont := 0
     if (hwnd = "")
@@ -87,13 +87,13 @@ _TTG(Cmd, Arg1, Arg2 := "") {
 
 
 
-; =========================================================================================== [DISPLAY]
+; ☞----------------------☜ [DISPLAY]
 
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 ; RunToolTip (Text , [OP2, OP3, OP4, OP5]) [Optional Parameters/Default Values]
 RunToolTip(GetText, @ToolTipTimeOut:="", @MousePosition:=True,  @X:="7", @Y:="0"){
 @TimeOut := @ToolTipTimeOut=="" ? @ToolTipTimeOut_Default_Global  : @ToolTipTimeOut
-    RunRemoveToolTip() ;--------------------------------------------------------------------- [CALL] [FUNCTION]
+    RunRemoveToolTip() ; ☞----------------------☜ [CALL] [FUNCTION]
     if (@MousePosition)
         ToolTip, %GetText%, @X, @Y+=31
     else
@@ -101,12 +101,12 @@ RunToolTip(GetText, @ToolTipTimeOut:="", @MousePosition:=True,  @X:="7", @Y:="0"
     SetTimer, RunRemoveToolTip, %@TimeOut%
 }
 
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 RunTollTipHotkeyInfo(GetText:="", @ToolTipTimeOut:="", @MousePosition:=True){
 @TimeOut := @ToolTipTimeOut=="" ? @ToolTipTimeOut_Default_Global : @ToolTipTimeOut
 FormatTime, @CurrentDateTime,, hh:mm:ss tt
 MouseGetPos, mX, mY
-; =========================================================================================== [TEXT]
+; ☞----------------------☜ [TEXT]
 SetText =
 (
 Hotkey: %A_ThisHotkey%
@@ -114,18 +114,18 @@ Hotkey: %A_ThisHotkey%
 if not (GetText="")
     SetText := SetText "`n" "ToolTip: " GetText
 SetText := SetText "`n`n" "Time: " @CurrentDateTime
-; =========================================================================================== [TEXT] [RETURN]
-RunToolTip(SetText, @TimeOut, @MousePosition, mX, mY) ;-------------------------------------- [CALL] [FUNCTION]
+; ☞----------------------☜ [TEXT] [RETURN]
+RunToolTip(SetText, @TimeOut, @MousePosition, mX, mY) ; ☞----------------------☜ [CALL] [FUNCTION]
 }
 
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 RunTollTipDisplay(GetText:="", @ToolTipTimeOut:="", @MousePosition:=True){
 @TimeOut := @ToolTipTimeOut=="" ? @ToolTipTimeOut_Default_Global  : @ToolTipTimeOut
 MouseGetPos, mX, mY
-RunToolTip(GetText, @TimeOut, @MousePosition, mX, mY) ;-------------------------------------- [CALL] [FUNCTION]
+RunToolTip(GetText, @TimeOut, @MousePosition, mX, mY) ; ☞----------------------☜ [CALL] [FUNCTION]
 }
 
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 RunRemoveToolTip(){
 ToolTip
 }

@@ -1,4 +1,4 @@
- ; =========================================================================================== [HOTKEY] [AUTO CREATE SIZE]
+ ; ☞----------------------☜ [HOTKEY] [AUTO CREATE SIZE]
  XButton2::
 	function_icolover(5)	;256x256
 	function_icolover(8)	;128x128
@@ -12,12 +12,12 @@
 	;SendInput, ^s
 Return
 
-; =========================================================================================== [HOTKEY] [CLOSE FILE]
+; ☞----------------------☜ [HOTKEY] [CLOSE FILE]
 XButton1::
 	SendInput, ^{F4}
 Return
 
-; =========================================================================================== [FUNCITONS]
+; ☞----------------------☜ [FUNCITONS]
 function_icolover(size){
 	SendInput, ^i
 	SendInput, !%size%

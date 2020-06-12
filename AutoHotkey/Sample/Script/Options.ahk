@@ -1,4 +1,4 @@
-; =========================================================================================== [OPTIONS]
+; ☞----------------------☜ [OPTIONS]
 								; [#] Directives
 #KeyHistory, 0              	; Disable key history.
 #MaxThreadsPerHotkey, 1     	; No re-entrant hotkey handling.

@@ -1,51 +1,29 @@
-; =========================================================================================== [OPTIONS]
-; #Include %A_ScriptDir%\\Script\Options.ahk
-; =========================================================================================== [FUNCTION] [TOOLTIP]
-; #Include %A_ScriptDir%\\Script\ToolTip.ahk
-; @ToolTipTimeOut_Specify_Global = -5000  ; Re-Assign value for Specified TimeOut
-; @ToolTipTimeOut_Default_Global = -2000  ; Re-Assign value for Default TimeOut
-; =========================================================================================== [FUNCTIONS]
-; #Include %A_ScriptDir%\\Script\Functions.ahk
-; =========================================================================================== [VARIABLES]
-; M_SPEED (Range 1-20, 10 is default)
-; MOUSE_SPEED_CURRENT = null
-; MOUSE_SPEED_SPECIFIED = 1
-; SPI_GETMOUSESPEED := 0x70		; GET PRESENT MOUSE SPEED
-; SPI_SETMOUSESPEED := 0x71		; SET SPECIFIED MOUSE SPEED
-; =========================================================================================== [FILES]
-; =========================================================================================== [HOTKEY] [LABEL]
-;Hotkey, ~LShift,  Off
-; TOGGLE_SECONDARY_SPEED = TRUE
-; Return
-; =========================================================================================== [OPTIONS] [RETURN]
-
-
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 set_mouse_speed_value_primary(speed_value_primary){
 	Sleep, 100
 	DllCall("SystemParametersInfo", "UInt", 0x71, "UInt", 0, "Ptr", speed_value_primary, "UInt", 0)
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 set_mouse_speed_value_secondary(speed_value_secondary){
 	Sleep, 100
 	GLOBAL MOUSE_SPEED_SPECIFIED = speed_value_secondary
 }
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 get_mouse_speed_current:
 	; Get the present mouse speed and store it to MOUSE_SPEED_CURRENT variable.
 	DllCall("SystemParametersInfo", "UInt", 0x70, "UInt", 0, "UIntP", MOUSE_SPEED_CURRENT, "UInt", 0)
 Return
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 set_mouse_speed_specified:
 	; Set the mouse speed to MOUSE_SPEED_SPECIFIED value.
 	DllCall("SystemParametersInfo", "UInt", 0x71, "UInt", 0, "Ptr", MOUSE_SPEED_SPECIFIED, "UInt", 0)
 Return
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 set_mouse_speed_current:
 	; Set the mouse back to the Current Speed State
 	DllCall("SystemParametersInfo", "UInt", 0x71, "UInt", 0, "Ptr", MOUSE_SPEED_CURRENT, "UInt", 0)
 Return
-; =========================================================================================== [HOTKEY] [SET PRIMARY MOUSE POINTER SPEED]
+; ☞----------------------☜ [HOTKEY] [SET PRIMARY MOUSE POINTER SPEED]
 ~LButton & Numpad1::
 	set_mouse_speed_value_primary(1)
 Return
@@ -80,7 +58,7 @@ Return
 ~LButton & NumpadDel::
 	set_mouse_speed_value_primary(11)
 Return
-; =========================================================================================== [HOTKEY] [SET SECONDARY MOUSE POINTER SPEED]
+; ☞----------------------☜ [HOTKEY] [SET SECONDARY MOUSE POINTER SPEED]
 ~RButton & Numpad1::
 	set_mouse_speed_value_secondary(1)
 Return
@@ -115,29 +93,21 @@ Return
 ~RButton & NumpadDel::
 	set_mouse_speed_value_secondary(11)
 Return
-; =========================================================================================== [HOTKEY] [TOGGLE SECONDARY MOUSE POINTER SPEED]
+; ☞----------------------☜ [HOTKEY] [TOGGLE SECONDARY MOUSE POINTER SPEED]
 ~LShift & MButton::
 	TOGGLE_SECONDARY_SPEED := !TOGGLE_SECONDARY_SPEED
 	; Hotkey, ~LShift,  Toggle
 	KeyWait, MButton
 Return
 ~LShift::
-if not (TOGGLE_SECONDARY_SPEED){
-	Gosub, get_mouse_speed_current
-	Gosub, set_mouse_speed_specified
-	if GetKeyState("LShift")
-		KeyWait, LShift
-	Gosub, set_mouse_speed_current
-}
+	if not (TOGGLE_SECONDARY_SPEED){
+		Gosub, get_mouse_speed_current
+		Gosub, set_mouse_speed_specified
+		if GetKeyState("LShift")
+			KeyWait, LShift
+		Gosub, set_mouse_speed_current
+	}
 Return
 ~LShift Up::
 	Gosub, set_mouse_speed_current
 Return
-
-
-
-
-
-
-; =========================================================================================== [HOTKEY] [EXIT APP]
-; #Include %A_ScriptDir%\\Script\ExitApp.ahk

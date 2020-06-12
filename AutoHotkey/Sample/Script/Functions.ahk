@@ -7,12 +7,12 @@
 ; [WAT - Window Active Title]
 ; [W_ID - Window ID]
 ; [WT - Window Title]
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 IsMouseOver_(WT){
 MouseGetPos,,, W_ID
 return WinExist(WT . " ahk_id " . W_ID)
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 IsProcessExist_(PIDorPN){
 Process, Exist, %PIDorPN%
 If ErrorLevel 			; Process is [Present].
@@ -20,13 +20,13 @@ If ErrorLevel 			; Process is [Present].
 Else
 	Return False
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 GetWinGetCmd_(SUBCMD , WT){
 WinGet, OPTVR , %SUBCMD%, %WT% 								; Get the subcommand of WT.
 Return %OPTVR% 												; Return window/process SUBCMD.
 }
 
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 GetWindowTitle_ProcessName(PN){
 	WT_PN	:= " ahk_exe " . PN
 	If (WinExist(WT_PN)){
@@ -35,7 +35,7 @@ GetWindowTitle_ProcessName(PN){
 	}
 Return
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 GetWindowTitle_IDorIDLast(IDorIDLast){
 	WT_IDorIDLAST	:= " ahk_id " . IDorIDLast
 	If (WinExist(WT_IDorIDLAST)){
@@ -44,12 +44,12 @@ GetWindowTitle_IDorIDLast(IDorIDLast){
 	}
 Return
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 GetWindowID_MC(){
 MouseGetPos, , , W_ID
 Return %W_ID%
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 GetWindowTitle_MC(){
 W_ID := GetWindowID_MC()
 	if (W_ID != ""){
@@ -63,20 +63,20 @@ W_ID := GetWindowID_MC()
 	}Else
 		Return False
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 ActivateWindow_MC(){
 MouseGetPos, , , W_ID
 WinActivate, ahk_id %W_ID%
 Sleep, 100
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 ActivateWindow_IDorIDLast(IDorIDLast){
 WT_IDorIDLAST	:= " ahk_id " . IDorIDLast
 If (WinExist(WT_IDorIDLAST))
 		WinActivate,  ahk_id %IDorIDLast%
 Sleep, 100
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 ProcessClose_PN(PN){
 	Loop, {													; CLOSE ALL PROGRAMS = TO %PN%
 		Process, Exist, %PN%
@@ -115,7 +115,7 @@ IsProcessNameFound_List(PN){
 		    Return False
 	}
 }
-; =========================================================================================== [FUNCTION]
+; ☞----------------------☜ [FUNCTION]
 MsgBox(Text, Titles := "", TimeOut := ""){
 MsgBox, 64, %Titles%, %Text%,  %TimeOut%
 }

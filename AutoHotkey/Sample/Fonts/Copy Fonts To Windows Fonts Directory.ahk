@@ -1,4 +1,4 @@
-﻿; =========================================================================================== [OPTIONS]
+﻿; ☞----------------------☜ [OPTIONS]
 								; [#] Directives
 #KeyHistory, 0              	; Disable key history.
 #MaxThreadsPerHotkey, 1     	; No re-entrant hotkey handling.
@@ -32,7 +32,6 @@ SetMouseDelay -1
 ; SetWinDelay 0
 SetWinDelay, -1              	; Remove short delay done automatically after every windowing command except IfWinActive and IfWinExist.
 SetWorkingDir %A_ScriptDir%  	; Ensures a consistent starting directory.
-
 
 
 Run, CMD

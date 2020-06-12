@@ -1,4 +1,4 @@
-; =========================================================================================== [HOTKEY] [AUTO CREATE SIZE]
+; ☞----------------------☜ [HOTKEY] [AUTO CREATE SIZE]
  XButton2::
 	function_articons(6)	;256x256
 	function_articons(4)	;48x48
@@ -8,12 +8,12 @@
 	;SendInput, ^s
 Return
 
-; =========================================================================================== [HOTKEY] [CLOSE FILE]
+; ☞----------------------☜ [HOTKEY] [CLOSE FILE]
 XButton1::
 	SendInput, ^{F4}
 Return
 
-; =========================================================================================== [FUNCITONS]
+; ☞----------------------☜ [FUNCITONS]
 function_articons(size){
 	SendInput, ^i
 	SendInput, !%size%

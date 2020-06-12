@@ -1,23 +1,23 @@
-; =========================================================================================== [OPTIONS]
+; ☞----------------------☜ [OPTIONS]
 #Include %A_ScriptDir%\\Script\Options.ahk
-; =========================================================================================== [FUNCTION] [TOOLTIP]
+; ☞----------------------☜ [FUNCTION] [TOOLTIP]
 #Include %A_ScriptDir%\\Script\ToolTip.ahk
 @ToolTipTimeOut_Specify_Global = -5000  	; Re-Assign value for Specified TimeOut
 @ToolTipTimeOut_Default_Global = -5000  	; Re-Assign value for Default TimeOut
-; =========================================================================================== [FUNCTIONS]
+; ☞----------------------☜ [FUNCTIONS]
 #Include %A_ScriptDir%\\Script\Functions.ahk
-; =========================================================================================== [FILES]
+; ☞----------------------☜ [FILES]
 #Include %A_ScriptDir%\\Script\Files.ahk
 SplitPath, file_mspaint, @mspaint_ext
-; =========================================================================================== [VARIABLES]
+; ☞----------------------☜ [VARIABLES]
 #Include %A_ScriptDir%\\Script\Variables.ahk
-; =========================================================================================== [PROCESS]
+; ☞----------------------☜ [PROCESS]
 PID := DllCall("GetCurrentProcessId")		; Get the PID of this program when running.
 ; process_ := PID 							; This ahk produce PID once Running.
 ; process_ := "instanteyedropper.exe"
 process_ = %@mspaint_ext%
 Return
-; =========================================================================================== [OPTIONS] [RETURN]
+; ☞----------------------☜ [OPTIONS] [RETURN]
 ; Process, SubCommand [, PIDOrName, Value]
 
 ; SubCommand
@@ -55,108 +55,106 @@ Return
 
 
 
-; =========================================================================================== [HOTSTRING] [CHECK IF THE PROCESS IS EXIST]
+; ☞----------------------☜ [HOTSTRING] [CHECK IF THE PROCESS IS EXIST]
 :X*:00::
 ; Gosub, isprocess_exist
 Return
 :X*:11::
-Process, Exist, %process_%
-If ErrorLevel {  			; Process is [Present].
-	Gosub, viewinformation_process
-    MsgBox, The application is present.
-}
+	Process, Exist, %process_%
+	If ErrorLevel {  			; Process is [Present].
+		Gosub, viewinformation_process
+		MsgBox, The application is present.
+	}
 Else 						; Process is [Absent].
 	MsgBox, The application is ! present.
 Return
-; =========================================================================================== [HOTSTRING] [TERMINATE THE PROCESS]
+; ☞----------------------☜ [HOTSTRING] [TERMINATE THE PROCESS]
 :X*:22::
-Process, Exist, %process_%
-If ErrorLevel 				; Process is [Present].
-{
-	Process, Close, %process_%
-	If ErrorLevel 			; Process is [Closed].
-    	MsgBox, The application is close.
-	Else 					; Process was failed to [Closed].
-		MsgBox, The application is failed to close.
-}
+	Process, Exist, %process_%
+	If ErrorLevel 				; Process is [Present].
+	{
+		Process, Close, %process_%
+		If ErrorLevel 			; Process is [Closed].
+			MsgBox, The application is close.
+		Else 					; Process was failed to [Closed].
+			MsgBox, The application is failed to close.
+	}
 Return
 :X*:212::
-Loop, { 					; Close all programs = to %closeProcessName%
-Process, Exist, %process_%
-	If ErrorLevel { 		; ProcessName is [Present].
-		Process, Close, %process_%
-		If ErrorLevel 		; ProcessName is [Closed].
-	    	Continue
-		Else 				; ProcessName was failed to [Closed].
-			Continue
-	}Else 					; ProcessName is ! [Present].
-		Break
-}
+	Loop, { 					; Close all programs = to %closeProcessName%
+		Process, Exist, %process_%
+			If ErrorLevel { 		; ProcessName is [Present].
+				Process, Close, %process_%
+				If ErrorLevel 		; ProcessName is [Closed].
+					Continue
+				Else 				; ProcessName was failed to [Closed].
+					Continue
+			}Else 					; ProcessName is ! [Present].
+				Break
+	}
 Return
-; =========================================================================================== [HOTSTRING] [SET THE PROGRAM PROCESS PRIORITY]
+; ☞----------------------☜ [HOTSTRING] [SET THE PROGRAM PROCESS PRIORITY]
 :X*:44::
-Process, Priority, %process_%, L
+	Process, Priority, %process_%, L
 Return
-; =========================================================================================== [HOTSTRING] [WAIT FOR THE PROGRAM TO BE PRESENT WITHIN SPECIFY TIME]
+; ☞----------------------☜ [HOTSTRING] [WAIT FOR THE PROGRAM TO BE PRESENT WITHIN SPECIFY TIME]
 :X*:55::
 Process, Exist, %process_%
-If ErrorLevel 				; Process is [Present].
-{
+	If ErrorLevel { 				; Process is [Present].
 
-} Else{ 					; Process is [Absent].
-	Process, Wait, %process_%, 5
-	If ErrorLevel 			; Process is [Present].
-		MsgBox The process is up and running within 5 seconds.
-	Else 					; Process is [Absent].
-		MsgBox The process is not running within 5 seconds.
-}
+	} Else{ 					; Process is [Absent].
+		Process, Wait, %process_%, 5
+		If ErrorLevel 			; Process is [Present].
+			MsgBox The process is up and running within 5 seconds.
+		Else 					; Process is [Absent].
+			MsgBox The process is not running within 5 seconds.
+	}
 Return
-; =========================================================================================== [HOTSTRING] [WAIT FOR THE PROGRAM TO BE CLOSE WITHIN SPECIFY TIME]
+; ☞----------------------☜ [HOTSTRING] [WAIT FOR THE PROGRAM TO BE CLOSE WITHIN SPECIFY TIME]
 :X*:66::
-Process, Exist, %process_%
-If ErrorLevel 				; Process is [Present].
-{
-	Process, WaitClose, %process_%, 5
-	If ErrorLevel 			; Process is [Closed/Terminated].
-	    MsgBox The process did not close within 5 seconds.
-	Else 					; Process is still [Running].
-		MsgBox The process is close within 5 seconds.
-}
+	Process, Exist, %process_%
+	If ErrorLevel 				; Process is [Present].
+	{
+		Process, WaitClose, %process_%, 5
+		If ErrorLevel 			; Process is [Closed/Terminated].
+			MsgBox The process did not close within 5 seconds.
+		Else 					; Process is still [Running].
+			MsgBox The process is close within 5 seconds.
+	}
 Return
-
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 viewinformation_process:
 	getvalWTPN := " ahk_exe " . process_
 
-			getval_ID		:= GetWinGetCmd_(WinGet_ID , getvalWTPN)
-			getval_Count	:= GetWinGetCmd_(WinGet_Count , getvalWTPN)
+	getval_ID		:= GetWinGetCmd_(WinGet_ID , getvalWTPN)
+	getval_Count	:= GetWinGetCmd_(WinGet_Count , getvalWTPN)
 
-			wtitle 			:= GetWindowTitle_IDorIDLast(getval_ID)
-			; Sleep, 100
-			ActivateWindow_IDorIDLast(getval_ID)
+	wtitle 			:= GetWindowTitle_IDorIDLast(getval_ID)
+	; Sleep, 100
+	ActivateWindow_IDorIDLast(getval_ID)
 
-Concat =
+	Concat =
 (
 WinTitle: %wtitle%
 ID: %getval_ID%
 IDLast: %getval_IDLast%
 )
-RunTollTipDisplay(Concat)
+	RunTollTipDisplay(Concat)
 Return
-; =========================================================================================== [LABEL]
+; ☞----------------------☜ [LABEL]
 isprocess_exist:
-PN = notepad.exe
-PID := DllCall("GetCurrentProcessId")
-getval := IsProcessExist_(PN) == 1 ? "True" : "False"
-ConcatDisplay =
+	PN = notepad.exe
+	PID := DllCall("GetCurrentProcessId")
+	getval := IsProcessExist_(PN) == 1 ? "True" : "False"
+	ConcatDisplay =
 (
 PIDorPN : %getval%
 )
-RunTollTipDisplay(ConcatDisplay)
+	RunTollTipDisplay(ConcatDisplay)
 Return
 
 
 
 
-; =========================================================================================== [HOTKEY] [EXIT APP]
+; ☞----------------------☜ [HOTKEY] [EXIT APP]
 #Include %A_ScriptDir%\\Script\ExitApp.ahk
